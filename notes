@@ -1,0 +1,67 @@
+/* static char *read_file(int fd, char *buffer)
+{
+        char *temp;
+        int bytes;
+        int i;        
+        int flag;
+
+        flag = 0;
+        temp = malloc(BUFFER_SIZE *(sizeof (char)));
+        if(!temp){
+                free(temp);
+                return(NULL);               
+        }
+        bytes = 1;
+        
+        while(flag == 0 && bytes != 0)
+        {
+                if(!buffer)
+                        bytes = read(fd,temp,BUFFER_SIZE);
+                printf("temp %s\n", temp);
+                if(bytes < 0){
+                        free(temp);
+                        return (NULL);
+                }
+                buffer = ft_strjoin(buffer,temp);
+                flag = ft_strchr(temp,'\n');
+        }
+        return(buffer);
+} */
+
+
+
+/* static char *grab_rest(char *buffer)
+{
+        char *temp;
+        int i;
+        int j;
+
+        i = 0;
+        j = 0;
+        while(buffer[i] != '\n' ||buffer[i] != '\0')
+        i++;
+        if(buffer[i] == '\n')
+        {
+         i++;       
+        }
+        while(buffer[i] != '\0' )
+        {
+         temp[j++] = buffer[i++];      
+        }
+        temp[j] = '\0';
+        return(temp);
+        
+} */
+
+
+/*         printf("line %s\n", line);
+        free(line);
+        line = get_next_line(fd);
+        printf("line %s\n", line);
+        free(line);
+        line = get_next_line(fd);
+        printf("line %s\n", line);
+        free(line);
+        line = get_next_line(fd);
+        printf("line %s\n", line);
+        free(line); */
