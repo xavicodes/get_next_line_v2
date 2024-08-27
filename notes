@@ -65,3 +65,26 @@
         line = get_next_line(fd);
         printf("line %s\n", line);
         free(line); */
+
+
+
+
+
+            int i = 0;
+    int j = 0;
+
+    while(buffer[i] != '\n' && buffer[i] != '\0') {
+        i++;
+    }
+    if(buffer[i] == '\n')
+        i++;
+    char *temp = malloc((ft_strlen(buffer) - i + 1) * sizeof(char));
+    if(buffer[i] == '\0')
+        return NULL;     
+    while(buffer[i+j])
+        {
+                temp[j] = buffer[i+j];
+                j++;
+        }
+    temp[j] = '\0';
+    return (free(buffer),temp);

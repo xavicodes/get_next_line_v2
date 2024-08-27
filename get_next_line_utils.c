@@ -6,7 +6,7 @@
 /*   By: xlourenc <xlourenc@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:42:38 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/08/21 17:15:39 by xlourenc         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:20:42 by xlourenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		a++;
 	}
 	a = 0;
+	free(s1);
 	while (s2 != NULL && s2[a])
 	{
 		str3[i] = s2[a];
@@ -68,8 +69,6 @@ int ft_strchr(const char *str, char c)
 		return 0;
 	while(str[i] != c && str[i] != '\0')
 	i++;
-	if(str[i] == '\0')
-		return(1);
 	if(str[i] == c)
 		return (1);
 	return 0;
