@@ -6,28 +6,26 @@
 /*   By: xlourenc <xlourenc@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:42:38 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/08/27 15:59:56 by xlourenc         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:43:21 by xlourenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//extra functions.
-//STRJOIN - JOINING THE BUFFER TO THE GLOBAL VARIABLE.
-//STRCHR - USED TO SEARCH TRUE THE STRING FOR A "\n" and give use a flag 0 or 1. 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!str)
-		return(0);
-	while(str[i])
+	if (!str)
+		return (0);
+	while (str[i])
 	{
 		i++;
 	}
-	return i;
+	return (i);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;

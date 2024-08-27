@@ -88,3 +88,16 @@
         }
     temp[j] = '\0';
     return (free(buffer),temp);
+
+
+    	/*         printf("line %s\n", line);
+			free(line);
+			line = get_next_line(fd);
+			printf("line %s\n", line);
+			free(line);
+			line = get_next_line(fd);
+			printf("line %s\n", line);
+			free(line);
+			line = get_next_line(fd);
+			printf("line %s\n", line);
+			free(line); */
