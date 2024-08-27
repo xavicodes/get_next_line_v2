@@ -6,7 +6,7 @@
 /*   By: xlourenc <xlourenc@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 14:42:38 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/08/27 15:20:42 by xlourenc         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:59:56 by xlourenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,46 +30,40 @@ int ft_strlen(char *str)
 }
 char	*ft_strjoin(char *s1, char *s2)
 {
+	char	*str;
+	int		j;
 	int		i;
-	int		a;
-	char	*str3;
 
-	i = 0;
-	a = 0;
-	if (!s2)
-		return (NULL);
-	
-	str3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str3)
-		return (NULL);
-	while (s1 != NULL && s1[a])
+	i = -1;
+	if (!s1)
 	{
-		str3[i] = s1[a];
-		i++;
-		a++;
+		s1 = malloc(sizeof(char) + 1);
+		if (!s1)
+			return (0);
+		s1[0] = 0;
 	}
-	a = 0;
+	str = malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s1[++i])
+		str[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		str[i + j] = s2[j];
+	str[i + j] = '\0';
 	free(s1);
-	while (s2 != NULL && s2[a])
-	{
-		str3[i] = s2[a];
-		i++;
-		a++;
-	}
-	str3[i] = '\0';
-	return (str3);
+	return (str);
 }
 
-int ft_strchr(const char *str, char c)
- {
-	int i;
-	
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
+
 	i = 0;
-	if(str == NULL)
-		return 0;
-	while(str[i] != c && str[i] != '\0')
-	i++;
-	if(str[i] == c)
-		return (1);
-	return 0;
-} 
+	while (s[i] != (unsigned char)c && s[i] != '\0')
+		i++;
+	if (s[i] == (unsigned char)c)
+		return ((char *)&s[i]);
+	else
+		return (NULL);
+}
