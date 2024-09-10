@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	buffer = grab_rest(buffer);
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	int		fd;
@@ -123,4 +123,4 @@ int	main(void)
 	}
 	free(line);
 	close(fd);
-}
+}*/
