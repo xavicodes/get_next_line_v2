@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xlourenc <xlourenc@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: xlourenc <xlourenc@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 12:23:06 by xaviermonte       #+#    #+#             */
-/*   Updated: 2024/08/27 17:43:10 by xlourenc         ###   ########.fr       */
+/*   Created: 2024-09-17 14:35:51 by xlourenc          #+#    #+#             */
+/*   Updated: 2024-09-17 14:35:51 by xlourenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*grab_rest(char *buffer)
 {
@@ -93,33 +93,43 @@ static char	*read_file(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FOPEN_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= FOPEN_MAX)
 		return (NULL);
-	buffer = read_file(fd, buffer);
-	if (buffer == NULL)
+	buffer[fd] = read_file(fd, buffer[fd]);
+	if (buffer[fd] == NULL)
 		return (NULL);
-	line = grab_line(buffer);
-	buffer = grab_rest(buffer);
+	line = grab_line(buffer[fd]);
+	buffer[fd] = grab_rest(buffer[fd]);
 	return (line);
 }
 /*
-int	main(void)
+int main()
 {
-	int		fd;
-	char	*line;
+	int fd[3];
 
-	fd = open("text.txt", O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
+	fd[0] = open("test1.txt", O_RDONLY);
+	fd[2] = open("test3.txt", O_RDONLY);
+	fd[1] = open("test2.txt", O_RDONLY);
+	char *test1 = get_next_line(fd[0]);
+	char *test2 = get_next_line(fd[1]);
+	char *test3 = get_next_line(fd[2]);
+	while(test1 || test2 || test3)
 	{
-		printf("result %s\n", line);
-		free(line);
-		line = get_next_line(fd);
+		printf("test1: %s\n", test1);
+		printf("test2: %s\n", test2);
+		printf("test3: %s\n", test3);
+		test1 = get_next_line(fd[0]);
+		test2 = get_next_line(fd[1]);
+		test3 = get_next_line(fd[2]);
+        free(test1);
+        free(test2);
+	    free(test3);
 	}
-	free(line);
-	close(fd);
+	printf("BUFFER SIZE: %i\n", BUFFER_SIZE);
+	
+	close(fd[0]);
 }
 */
